@@ -1,0 +1,18 @@
+workflows:
+  build-android-app:
+    name: Build Android APK
+    max_build_duration: 10
+    environment:
+      vars:
+        JAVA_VERSION: 17
+      android:
+        image: latest
+    scripts:
+      - echo "Building APK..."
+      - ./gradlew clean assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/app-debug.apk
+    publishing:
+      email:
+        recipients:
+          - adm.shadoww@gmail.com
