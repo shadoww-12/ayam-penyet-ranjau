@@ -1,17 +1,15 @@
 workflows:
   build-android-app:
     name: Build Android APK
-    max_build_duration: 15
+    max_build_duration: 20
     environment:
-      java: 17
+      flutter: stable
     scripts:
-      - echo "Starting build..."
-      - chmod +x gradlew
-      - ./gradlew clean assembleDebug
+      - name: Get dependencies
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --debug
     artifacts:
-      - aartifacts:
-  - build/app/outputs/flutter-apk/app-release.apk
-    publishing:
-      email:
-        recipients:
-          - adm.shadoww@gmail.com
+      - build/app/outputs/flutter-apk/app-debug.apk
