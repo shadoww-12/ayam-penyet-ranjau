@@ -9,7 +9,8 @@ workflows:
       - chmod +x gradlew
       - ./gradlew clean assembleDebug
     artifacts:
-      - app/build/outputs/apk/debug/app-debug.apk
+      - aartifacts:
+  - build/app/outputs/flutter-apk/app-release.apk
     publishing:
       email:
         recipients:
